@@ -1,34 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:shumeet/view/timeline/children/interest_hobby_card.dart';
+import 'package:shumeet/view/timeline/children/interest_hobby_card_scroll_view.dart';
 
 class InterestScreen extends StatelessWidget {
   const InterestScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final interestHobbyCars = List.filled(8, const Padding(
-      padding: EdgeInsets.all(8.0),
-      child: InterestHobbyCard(),
-    ));
-
     //TODO Firebaseから利用者が登録している始めたい趣味を表示させる
     return SingleChildScrollView(
-      child: SizedBox(
-        height: 500,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 10),
-            const Text('#サイクリング'),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: interestHobbyCars,
-              ),
-            ),
-          ],
-        ),
+        child: Padding(
+      padding: const EdgeInsets.only(left: 8.0),
+      child: Column(
+        children: const [
+          InterestHobbyCardScrollView(hobby: 'サイクリング'),
+          InterestHobbyCardScrollView(hobby: 'キャンプ'),
+          InterestHobbyCardScrollView(hobby: '釣り'),
+          Center(
+            child: Icon(Icons.handshake_outlined,size: 50,),
+          ),
+          SizedBox(height: 20),
+        ],
       ),
-    );
+    ));
   }
 }
