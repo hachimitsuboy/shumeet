@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shumeet/view/timeline/children/interest_hobby_card.dart';
+import 'package:shumeet/view/timeline/children/interest_screen/interest_hobby_card.dart';
 
 class InterestHobbyCardScrollView extends StatelessWidget {
   const InterestHobbyCardScrollView({
