@@ -47,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: _onItemTapped,
         selectedItemColor: Colors.blueAccent,
         unselectedItemColor: Colors.black45,
+        type: BottomNavigationBarType.fixed,
       ),
     );
   }
