@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shumeet/view/index_screen.dart';
-import 'package:shumeet/view/timeline/time_line_screen.dart';
+import 'package:shumeet/view/home_screen.dart';
 
 void main() {
   runApp(
@@ -16,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       title: 'shumeet',
-      home: TimeLineScreen(),
+      home: HomeScreen(),
     );
   }
 }
