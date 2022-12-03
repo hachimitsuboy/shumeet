@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shumeet/view/profile/children/profile_edit_button.dart';
 import 'package:shumeet/view/profile/children/profile_status.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -19,6 +20,15 @@ class ProfileScreen extends StatelessWidget {
         ),
         SizedBox(height: 15),
         ProfileStatus(),
+        SizedBox(height: 10),
+        Padding(
+          padding: EdgeInsets.only(left: 16.0),
+          child: Text('はちみつ大好き23歳'),
+        ),
+        Padding(
+          padding: EdgeInsets.all(16.0),
+          child: ProfileEditButton(),
+        ),
       ],
     );
   }
