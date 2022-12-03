@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:shumeet/view/message/message_screen.dart';
 import 'package:shumeet/view/profile/profile_screen.dart';
 import 'package:shumeet/view/setting/setting_screen.dart';
 import 'package:shumeet/view/timeline/time_line_screen.dart';
 
-class HomeScreen extends StatefulWidget {
+final homeNavigationProvider = StateProvider((ref) => 0);
+
+const screenList = <Widget>[
+  TimeLineScreen(),
+  MessageScreen(),
+  ProfileScreen(),
+  SettingScreen(),
+];
+
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
+  Widget build(BuildContext context, WidgetRef ref) {
+    final currentIndex = ref.watch(homeNavigationProvider);
 
-class _HomeScreenState extends State<HomeScreen> {
-  int _currentIndex = 0;
-  static const screenList = <Widget>[
-    TimeLineScreen(),
-    MessageScreen(),
-    ProfileScreen(),
-    SettingScreen(),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
     return Scaffold(
-      body: screenList.elementAt(_currentIndex),
+      body: screenList.elementAt(currentIndex),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
@@ -43,18 +42,14 @@ class _HomeScreenState extends State<HomeScreen> {
             label: '設定',
           ),
         ],
-        currentIndex: _currentIndex,
-        onTap: _onItemTapped,
+        currentIndex: currentIndex,
+        onTap: (index) {
+          ref.read(homeNavigationProvider.notifier).state = index;
+        },
         selectedItemColor: Colors.blueAccent,
         unselectedItemColor: Colors.black45,
         type: BottomNavigationBarType.fixed,
       ),
     );
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
   }
 }
